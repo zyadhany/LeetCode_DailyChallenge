@@ -1,6 +1,8 @@
 class Solution {
 public:
     double champagneTower(int poured, int query_row, int query_glass) {
+        double flow;
+
         vector<vector<double>> X(query_row + 1, vector<double>(query_row + 10));
 
         X[0][0] = poured;
@@ -8,9 +10,9 @@ public:
             for (int j = 0; j <= i; j++){
                 if (X[i][j] <= 1) continue;
 
-                X[i][j] -= 1;
-                X[i + 1][j] += X[i][j] / 2;
-                X[i + 1][j + 1] += X[i][j] / 2;
+                flow = (X[i][j] - 1) / 2;
+                X[i + 1][j] += flow;
+                X[i + 1][j + 1] += flow;
             }
         }
 
