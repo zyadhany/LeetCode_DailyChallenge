@@ -1,3 +1,18 @@
+// Time O(1), memory O(1)
+class Solution {
+public:
+    int integerBreak(int n) {
+        if (n <= 3) return (n - 1);
+
+        int k = n / 3, r = n % 3;
+
+        if (r == 1) return (pow(3, k - 1) * 4);
+        return (pow(3, k) * pow(2, r / 2));
+    }
+};
+
+
+// Dp solution -> Time O(nlog(n)), memory O(n)
 class Solution {
 public:
     int integerBreak(int n) {
